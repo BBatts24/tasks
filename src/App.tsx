@@ -14,7 +14,7 @@ function App(): JSX.Element {
             </header>
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload. Hello World.
+                automatically reload. Hello World!.
             </p>
             <h1 className="App-header2">Interesting...</h1>
             <img
@@ -36,8 +36,8 @@ function App(): JSX.Element {
                     </Col>
                     <Col>
                         <div className="App-rect"></div>
-                        <Button onClick={() => console.log("Hello World")}>
-                            Log Hello World
+                        <Button onClick={() => console.log("Hello World!")}>
+                            Log Hello World!
                         </Button>
                     </Col>
                 </Row>
