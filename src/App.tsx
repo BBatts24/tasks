@@ -1,5 +1,10 @@
+/* eslint-disable prettier/prettier */
 import React from "react";
 import "./App.css";
+import { Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import { Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 function App(): JSX.Element {
     return (
@@ -11,6 +16,32 @@ function App(): JSX.Element {
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload. Hello World.
             </p>
+            <h1 className="App-header2">Interesting...</h1>
+            <img
+                src="https://m.media-amazon.com/images/M/MV5BNmNkNWU5NzUtNmVkNS00ZDE2LTg0NjgtNTIxNWYxOWIyM2FlXkEyXkFqcGdeQWFkcmllY2xh._V1_.jpg"
+                width="500"
+                height="400"
+                alt="oppenheimer"
+            />
+            <p> </p>
+            <Container>
+                <Row>
+                    <Col>
+                        <div className="App-rect"></div>
+                        <ul>
+                            <li>Monkey</li>
+                            <li>Horse</li>
+                            <li>Frog</li>
+                        </ul>
+                    </Col>
+                    <Col>
+                        <div className="App-rect"></div>
+                        <Button onClick={() => console.log("Hello World")}>
+                            Log Hello World
+                        </Button>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 }
