@@ -39,8 +39,17 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    const arr: string[] = amounts.map((num: string): string => num.slice(1));
-    return arr.map((num: string): number => parseInt(num) || 0);
+    let arr: number[] = [];
+    amounts.map((num) => {
+        //console.log(num.slice(1));
+        if (num[0] === "$") {
+            num = num.slice(1);
+            arr = [...arr, parseInt(num) || 0];
+        } else {
+            arr = [...arr, parseInt(num) || 0];
+        }
+    });
+    return arr;
 };
 
 /**
@@ -49,7 +58,17 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    let m: string[] = [];
+    messages.map((message) => {
+        if (message[message.length - 1] === "!") {
+            m = [...m, message.toUpperCase()];
+        } else {
+            m = [...m, message];
+        }
+    });
+    return m.filter(
+        (message: string): boolean => message[message.length - 1] !== "?"
+    );
 };
 
 /**
@@ -86,7 +105,17 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    let sum = 0;
+    let x = "";
+    if (addends.length === 0) {
+        return "0=0";
+    }
+    addends.map((num: number): number => (sum += num));
+    x = sum.toString() + "=";
+    addends.map((num) => {
+        x += num.toString() + "+";
+    });
+    return x.slice(0, -1);
 }
 
 /**
@@ -99,16 +128,23 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    let index = values.length - 1;
-    let total = 0;
-    for (const value of values) {
-        total += value;
-    }
-    for (let i = 0; i < values.length - 1; i++) {
-        if (values[i] < 0) {
-            index = i + 1;
-            break;
+    let negative = false;
+    const index = values.findIndex((val: number): boolean => val < 0);
+    const pos = values.filter((value: number): boolean => {
+        if (value < 0) {
+            negative = true;
         }
+        return !negative;
+    });
+    const sum: number = pos.reduce(
+        (total: number, positive: number) => (total += positive),
+        0
+    );
+    const final: number[] = [...values];
+    if (index === -1) {
+        final.splice(values.length, 0, sum);
+    } else {
+        final.splice(index + 1, 0, sum);
     }
-    return values.splice(index, 0, total);
+    return final;
 }
