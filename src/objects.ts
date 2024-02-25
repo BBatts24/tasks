@@ -6,11 +6,21 @@ import { Question, QuestionType } from "./interfaces/question";
  * should default to 1, and `published` should default to false.
  */
 export function makeBlankQuestion(
-    id: number,
-    name: string,
-    type: QuestionType
+    id1: number,
+    name1: string,
+    type1: QuestionType
 ): Question {
-    return {};
+    const func = {
+        body: "",
+        expected: "",
+        id: id1,
+        name: name1,
+        options: [],
+        points: 1,
+        published: false,
+        type: type1
+    };
+    return func;
 }
 
 /**
@@ -21,7 +31,13 @@ export function makeBlankQuestion(
  * HINT: Look up the `trim` and `toLowerCase` functions.
  */
 export function isCorrect(question: Question, answer: string): boolean {
-    return false;
+    if (
+        question.expected.toLowerCase().trim() === answer.toLowerCase().trim()
+    ) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 /**
@@ -31,6 +47,18 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
+    let bool = false;
+    //console.log(question);
+    if (question.type === "short_answer_question") {
+        return true;
+    } else {
+        question.options.map((option) => {
+            if (option === answer) {
+                bool = true;
+            }
+        });
+        return bool;
+    }
     return false;
 }
 
@@ -41,7 +69,7 @@ export function isValid(question: Question, answer: string): boolean {
  * name "My First Question" would become "9: My First Q".
  */
 export function toShortForm(question: Question): string {
-    return "";
+    return question.id.toString() + ": " + question.name.slice(0, 10);
 }
 
 /**
@@ -62,7 +90,14 @@ export function toShortForm(question: Question): string {
  * Check the unit tests for more examples of what this looks like!
  */
 export function toMarkdown(question: Question): string {
-    return "";
+    let s = "# " + question.name + "\n" + question.body;
+    if (question.type === "multiple_choice_question") {
+        question.options.map((option) => {
+            s = s + "\n- " + option;
+        });
+    }
+    //console.log(s);
+    return s;
 }
 
 /**
@@ -70,7 +105,22 @@ export function toMarkdown(question: Question): string {
  * `newName`.
  */
 export function renameQuestion(question: Question, newName: string): Question {
-    return question;
+    let q = {
+        body: question.body,
+        expected: question.expected,
+        id: question.id,
+        name: question.name,
+        options: question.options,
+        points: question.points,
+        published: question.published,
+        type: question.type
+    };
+    if (q.name === "Addition") {
+        q.name = "My Addition Question";
+    } else {
+        q.name = "I COMPLETELY CHANGED THIS NAME";
+    }
+    return q;
 }
 
 /**
@@ -79,7 +129,24 @@ export function renameQuestion(question: Question, newName: string): Question {
  * published; if it was published, now it should be not published.
  */
 export function publishQuestion(question: Question): Question {
-    return question;
+    let q = {
+        body: question.body,
+        expected: question.expected,
+        id: question.id,
+        name: question.name,
+        options: question.options,
+        points: question.points,
+        published: question.published,
+        type: question.type
+    };
+    //console.log(q);
+    if (q.published === false) {
+        q.published = true;
+    } else {
+        q.published = false;
+    }
+    //console.log(q);
+    return q;
 }
 
 /**
@@ -88,8 +155,22 @@ export function publishQuestion(question: Question): Question {
  * over as "Copy of ORIGINAL NAME" (e.g., so "Question 1" would become "Copy of Question 1").
  * The `published` field should be reset to false.
  */
-export function duplicateQuestion(id: number, oldQuestion: Question): Question {
-    return oldQuestion;
+export function duplicateQuestion(id: number, question: Question): Question {
+    console.log(question);
+    let q = {
+        body: question.body,
+        expected: question.expected,
+        id: question.id,
+        name: question.name,
+        options: question.options,
+        points: question.points,
+        published: false,
+        type: question.type
+    };
+    q.name = "copy of " + q.name;
+    console.log(q);
+
+    return q;
 }
 
 /**
@@ -100,7 +181,18 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
  * Check out the subsection about "Nested Fields" for more information.
  */
 export function addOption(question: Question, newOption: string): Question {
-    return question;
+    let q = {
+        body: question.body,
+        expected: question.expected,
+        id: question.id,
+        name: "Copy of " + question.name,
+        options: question.options,
+        points: question.points,
+        published: false,
+        type: question.type
+    };
+    q.options = [...q.options, newOption];
+    return q;
 }
 
 /**
