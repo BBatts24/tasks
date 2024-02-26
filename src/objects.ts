@@ -31,6 +31,7 @@ export function makeBlankQuestion(
  * HINT: Look up the `trim` and `toLowerCase` functions.
  */
 export function isCorrect(question: Question, answer: string): boolean {
+    console.log(question);
     if (
         question.expected.toLowerCase().trim() === answer.toLowerCase().trim()
     ) {
@@ -129,7 +130,7 @@ export function renameQuestion(question: Question, newName: string): Question {
  * published; if it was published, now it should be not published.
  */
 export function publishQuestion(question: Question): Question {
-    let q = {
+    let t = {
         body: question.body,
         expected: question.expected,
         id: question.id,
@@ -140,13 +141,13 @@ export function publishQuestion(question: Question): Question {
         type: question.type
     };
     //console.log(q);
-    if (q.published === false) {
-        q.published = true;
+    if (t.published === false) {
+        t.published = true;
     } else {
-        q.published = false;
+        t.published = false;
     }
     //console.log(q);
-    return q;
+    return t;
 }
 
 /**
@@ -157,20 +158,19 @@ export function publishQuestion(question: Question): Question {
  */
 export function duplicateQuestion(id: number, question: Question): Question {
     console.log(question);
-    let q = {
+    let p = {
         body: question.body,
         expected: question.expected,
-        id: question.id,
+        id: id,
         name: question.name,
         options: question.options,
         points: question.points,
         published: false,
         type: question.type
     };
-    q.name = "copy of " + q.name;
-    console.log(q);
-
-    return q;
+    p.name = "Copy of " + p.name;
+    console.log(p);
+    return p;
 }
 
 /**
@@ -181,18 +181,18 @@ export function duplicateQuestion(id: number, question: Question): Question {
  * Check out the subsection about "Nested Fields" for more information.
  */
 export function addOption(question: Question, newOption: string): Question {
-    let q = {
+    let o = {
         body: question.body,
         expected: question.expected,
         id: question.id,
-        name: "Copy of " + question.name,
+        name: question.name,
         options: question.options,
         points: question.points,
-        published: false,
+        published: question.published,
         type: question.type
     };
-    q.options = [...q.options, newOption];
-    return q;
+    o.options = [...o.options, newOption];
+    return o;
 }
 
 /**
@@ -209,5 +209,15 @@ export function mergeQuestion(
     contentQuestion: Question,
     { points }: { points: number }
 ): Question {
-    return contentQuestion;
+    let q1 = {
+        body: contentQuestion.body,
+        expected: contentQuestion.expected,
+        id: id,
+        name: name,
+        options: contentQuestion.options,
+        points: points,
+        published: false,
+        type: contentQuestion.type
+    };
+    return q1;
 }
