@@ -152,7 +152,7 @@ export function publishQuestion(question: Question): Question {
  * The `published` field should be reset to false.
  */
 export function duplicateQuestion(id: number, question: Question): Question {
-    console.log(question);
+    //console.log(question);
     const p = {
         body: question.body,
         expected: question.expected,
@@ -164,7 +164,7 @@ export function duplicateQuestion(id: number, question: Question): Question {
         type: question.type
     };
     p.name = "Copy of " + p.name;
-    console.log(p);
+    //console.log(p);
     return p;
 }
 

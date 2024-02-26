@@ -130,8 +130,8 @@ export function makeMath(addends: number[]): string {
 export function injectPositive(values: number[]): number[] {
     let negative = false;
     const index = values.findIndex((val: number): boolean => val < 0);
-    const pos = values.filter((value: number): boolean => {
-        if (value < 0) {
+    const pos = values.filter((val: number): boolean => {
+        if (val < 0) {
             negative = true;
         }
         return !negative;
