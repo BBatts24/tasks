@@ -106,7 +106,7 @@ export function toMarkdown(question: Question): string {
  * `newName`.
  */
 export function renameQuestion(question: Question, newName: string): Question {
-    let q = {
+    const q = {
         body: question.body,
         expected: question.expected,
         id: question.id,
@@ -130,7 +130,7 @@ export function renameQuestion(question: Question, newName: string): Question {
  * published; if it was published, now it should be not published.
  */
 export function publishQuestion(question: Question): Question {
-    let t = {
+    const t = {
         body: question.body,
         expected: question.expected,
         id: question.id,
@@ -158,7 +158,7 @@ export function publishQuestion(question: Question): Question {
  */
 export function duplicateQuestion(id: number, question: Question): Question {
     console.log(question);
-    let p = {
+    const p = {
         body: question.body,
         expected: question.expected,
         id: id,
@@ -181,7 +181,7 @@ export function duplicateQuestion(id: number, question: Question): Question {
  * Check out the subsection about "Nested Fields" for more information.
  */
 export function addOption(question: Question, newOption: string): Question {
-    let o = {
+    const o = {
         body: question.body,
         expected: question.expected,
         id: question.id,
@@ -209,7 +209,7 @@ export function mergeQuestion(
     contentQuestion: Question,
     { points }: { points: number }
 ): Question {
-    let q1 = {
+    const q1 = {
         body: contentQuestion.body,
         expected: contentQuestion.expected,
         id: id,
