@@ -110,17 +110,12 @@ export function renameQuestion(question: Question, newName: string): Question {
         body: question.body,
         expected: question.expected,
         id: question.id,
-        name: question.name,
+        name: newName,
         options: question.options,
         points: question.points,
         published: question.published,
         type: question.type
     };
-    if (q.name === "Addition") {
-        q.name = "My Addition Question";
-    } else {
-        q.name = "I COMPLETELY CHANGED THIS NAME";
-    }
     return q;
 }
 
