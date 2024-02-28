@@ -1,6 +1,7 @@
-import { QuestionDotToken } from "typescript";
+//import { QuestionDotToken } from "typescript";
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
+//import { propTypes } from "react-bootstrap/esm/Image";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
