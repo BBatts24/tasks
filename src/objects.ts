@@ -60,7 +60,6 @@ export function isValid(question: Question, answer: string): boolean {
         });
         return bool;
     }
-    return false;
 }
 
 /**

@@ -18,13 +18,17 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    questions.filter(
-        (ques: Question): boolean =>
+    let n: Question[] = [];
+    questions.map((ques) => {
+        if (
             ques.body !== "" ||
             ques.expected !== "" ||
             ques.options.length !== 0
-    );
-    return questions;
+        ) {
+            n = [...n, ques];
+        }
+    });
+    return n;
 }
 
 /***
@@ -321,6 +325,7 @@ export function editOption(
     console.log(targetId);
     console.log(targetOptionIndex);
     console.log(newOption);
+    console.log(questions);
     questions.map((ques) => {
         if (ques.id === targetId) {
             const temp: Question = {
@@ -336,7 +341,7 @@ export function editOption(
             if (targetOptionIndex === -1) {
                 temp.options = [...temp.options, newOption];
             } else {
-                temp.options.splice(targetOptionIndex, 1, newOption);
+                temp.options[targetOptionIndex] = newOption;
             }
             b = [...b, temp];
         } else {
@@ -358,5 +363,30 @@ export function duplicateQuestionInArray(
     targetId: number,
     newId: number
 ): Question[] {
-    return [];
+    let index = 0;
+    let b: Question[] = [];
+    questions.map((ques) => {
+        //console.log(ques);
+        //console.log(newId);
+        index++;
+        if (ques.id === targetId) {
+            const temp: Question = {
+                body: ques.body,
+                expected: ques.expected,
+                id: newId,
+                name: "Copy of " + ques.name,
+                options: ques.options,
+                points: ques.points,
+                published: ques.published,
+                type: ques.type
+            };
+            b = [...b, ques];
+            //console.log(b);
+            b.splice(index, 0, temp);
+            //console.log(b);
+        } else {
+            b = [...b, ques];
+        }
+    });
+    return b;
 }
