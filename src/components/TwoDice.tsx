@@ -13,11 +13,9 @@ export function d6(): number {
 export function TwoDice(): JSX.Element {
     const [die1, setDie1] = useState<number>(1);
     const [die2, setDie2] = useState<number>(6);
-    <span>
-        <Button onClick={() => setDie1(d6())}>Add Right</Button>
-        to {getByTestId}.
-    </span>;
-    <span>
-        <Button onClick={() => setDie1(d6())}>Roll Left</Button>
-    </span>;
+    return (
+        <div>
+            <p>hello</p>
+        </div>
+    );
 }
