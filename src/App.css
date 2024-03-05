@@ -45,6 +45,11 @@
 .App-link {
     color: #61dafb;
 }
+.App-spacer {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    height: 20vh;
+}
 
 @keyframes App-logo-spin {
     from {

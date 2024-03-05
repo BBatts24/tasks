@@ -60,6 +60,7 @@ function App(): JSX.Element {
             <ChangeType></ChangeType>
             <hr />
             <CycleHoliday></CycleHoliday>
+            <div className="App-spacer"></div>
         </div>
     );
 }
