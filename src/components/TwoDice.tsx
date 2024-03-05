@@ -1,4 +1,4 @@
-import { getByTestId } from "@testing-library/react";
+//import { getByTestId } from "@testing-library/react";
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 /* Here is a helper function you *must* use to "roll" your die.
@@ -11,8 +11,8 @@ export function d6(): number {
 }
 
 export function TwoDice(): JSX.Element {
-    const [leftDie, setLeftDie] = useState<number>(d6());
-    const [rightDie, setRightDie] = useState<number>(d6());
+    const [leftDie, setLeftDie] = useState<number>(1);
+    const [rightDie, setRightDie] = useState<number>(2);
     const rollLeft = () => {
         setLeftDie(d6());
     };
