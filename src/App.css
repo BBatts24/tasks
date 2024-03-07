@@ -51,6 +51,47 @@
     height: 20vh;
 }
 
+.center {
+    width: 50%;
+    margin: auto;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.green {
+    background-color: green;
+}
+
+.maroon {
+    background-color: maroon;
+}
+
+.aquamarine {
+    background-color: aquamarine;
+}
+
+.gold {
+    background-color: goldenrod;
+}
+
+.silver {
+    background-color: silver;
+}
+
+.magenta {
+    background-color: magenta;
+}
+
+.purple {
+    background-color: purple;
+}
+
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);
