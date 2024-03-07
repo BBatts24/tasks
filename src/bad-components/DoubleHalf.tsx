@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-//import { dhValue, setDhValue } from "./DoubleHalfState";
+//import { dhValue, setDhValue } from "./DoubleHalfState"; 'said not to use global state'
 
 export function DoubleHalf(): JSX.Element {
     const [dhValue, setDhValue] = useState<number>(10);
